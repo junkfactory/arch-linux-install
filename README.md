@@ -76,3 +76,9 @@ Rebuild init cpio
 ```
 mkiniticpio -p linux-zen
 ```
+Reboot system and hope it boots up
+```
+exit
+umount -a
+reboot
+```
