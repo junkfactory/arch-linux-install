@@ -31,7 +31,6 @@ pacman -S --noconfirm \
     dosfstools \
     reflector \
     base-devel \
-    linux-headers \
     avahi \
     xdg-user-dirs \
     xdg-utils \

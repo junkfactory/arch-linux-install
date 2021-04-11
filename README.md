@@ -54,3 +54,25 @@ Setup users and password
 useradd -m -g users -G storage,power amontecillo
 passwd amontecillo
 ```
+## Configure system
+Install linux zen kernel
+```
+pacman -S linux-zen linux-zen-headers linux-firmware git vim
+ln -s /usr/bin/vim /usr/bin/vi
+```
+Clone and execute base-install-uefi.sh
+```
+git clone https://github.com/junkfactory/arch-linux-install.git
+cd arch-linux-install
+./base-install-uefi.sh
+```
+Update mkinitcpio.conf
+```
+vi /etc/mkinitcpio.conf
+### update modules with btrfs
+MODULES=(btrfs amdgpu)
+```
+Rebuild init cpio
+```
+mkiniticpio -p linux-zen
+```
