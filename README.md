@@ -37,44 +37,22 @@ mkdir -p /mnt/boot/efi
 mkdir /mnt/home
 mount -o noatime,compress=zstd,space_cache=v2,discard=async,subvol=@home \
     /dev/nvme0n1p3 /mnt/home
-mount /dev/nvme0n1p1 /mnt/boot/efi
 swapon /dev/nvme0n1p2
 ```
-Generate fstab
-```
-genfstab -U /mnt >> /mnt/etc/fstab
-```
+
 Bootstrap Arch Linux
 ```
-pacstrap /mnt base
+pacstrap /mnt base base-devel reflector git vim
+genfstab -U /mnt >> /mnt/etc/fstab
+mount /dev/nvme0n1p1 /mnt/boot/efi
 arch-chroot /mnt
 ```
-Setup users and password
-```
-useradd -m -g users -G storage,power amontecillo
-passwd amontecillo
-```
 ## Configure system
-Install linux zen kernel
-```
-pacman -S linux-zen linux-zen-headers linux-firmware git vim
-ln -s /usr/bin/vim /usr/bin/vi
-```
 Clone and execute base-install-uefi.sh
 ```
 git clone https://github.com/junkfactory/arch-linux-install.git
 cd arch-linux-install
 ./base-install-uefi.sh
-```
-Update mkinitcpio.conf
-```
-vi /etc/mkinitcpio.conf
-### update modules with btrfs
-MODULES=(btrfs amdgpu)
-```
-Rebuild init cpio
-```
-mkiniticpio -p linux-zen
 ```
 Reboot system and hope it boots up
 ```
