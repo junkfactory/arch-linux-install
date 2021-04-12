@@ -44,6 +44,7 @@ pacman -S --noconfirm \
     bluez-utils \
     alsa-utils \
     pulseaudio \
+    openssh \
     bash-completion \
     openssh \
     rsync \
@@ -51,6 +52,7 @@ pacman -S --noconfirm \
     acpi_call \
     tlp \
     dnsmasq \
+    blueman \
     nss-mdns \
     acpid \
     ntfs-3g \

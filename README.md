@@ -60,3 +60,24 @@ exit
 umount -a
 reboot
 ```
+# Configure XFCE
+Install pamac-aur
+```
+git clone https://aur.archlinux.org/pamac-aur.git
+cd pamac-aur
+makepkg -si
+```
+Thunar custom action - Edit as Root
+```
+Name: Edit as root
+Command: pkexec mousepad %f
+File pattern: *
+Appears if selection contains: Text files
+```
+Thunar custom action - Open as Root
+```
+Name: Open as root
+Command: pkexec thunar %f
+File pattern: *
+Appears if selection contains: Directories
+```
